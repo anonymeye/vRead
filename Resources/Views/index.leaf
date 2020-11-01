@@ -1,0 +1,26 @@
+#set("content") {
+<img src="/images/logo.png" class="mx-auto d-block" alt="iRead Logo" />
+<h1>books</h1>
+#if(books) {
+<table class="table table-bordered table-hover">
+    <thead class="thead-light">
+        <tr> <th>
+            title
+        </th> <th>
+            authors
+        </th> </tr>
+    </thead>
+    <tbody>
+        #for(book in books) {
+        <tr>
+            <td><a href="/books/#(book.id)"> #(book.title)</a></td>
+            <td>#(book.authors)</td>
+        </tr>
+        }
+    </tbody>
+</table>
+} else {
+<h2>There aren't any books yet!</h2>
+}
+}
+#embed("base")

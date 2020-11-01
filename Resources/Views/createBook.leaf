@@ -1,0 +1,41 @@
+
+
+#set("content") {
+<h1>#(title)</h1>
+
+<form method="post">
+    #// check if the context contains token
+    #if(csrfToken) {
+    <input type="hidden" name="csrfToken" value="#(csrfToken)">
+        }
+        <div class="form-group">
+            <label for="title">Book</label>
+            <input type="text" name="title" class="form-control"
+            id="title" #if(editing){value="#(book.title)"}/>
+        </div>
+        
+        <div class="form-group">
+            <label for="authors">authors</label>
+            <input type="text" name="authors" class="form-control"
+            id="authors" #if(editing){value="#(book.authors)"}/>
+        </div>
+        
+        <div class="form-group">
+            <label for="categories">Categories</label>
+            
+            <select name="categories[]" class="form-control"
+                id="categories" placeholder="Categories" multiple="multiple">
+                #if(editing) {
+                
+                #for(category in categories) {
+                
+                <option value="#(category.name)" selected="selected"> #(category.name)
+                </option> }
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary"> #if(editing){Update} else{Submit}
+        </button>
+</form>
+}
+#embed("base")
