@@ -1,4 +1,6 @@
 
+## Status
+web app using Vapor and postgres ... the work is **In Progres**
 
 ## Usage
 to build the project
